@@ -61,13 +61,16 @@
 </head>
 <body>
   <div class="container">
-    <h1>A Special Question... 💕</h1>
-    <p>Will you marry me? 💖</p>
-    <button onclick="yesResponse()">Yes! 💕</button>
-    <button onclick="noResponse()">Maybe... 😊</button>
-    <div id="response-message"></div>
-    <div id="hearts-container"></div>
+  <h1>A Special Question... 💕</h1>
+  <p>Will you marry me? 💖</p>
+  <div class="button-row">
+    <button onclick="yesResponse()">😊 Yes! 💕</button>
+    <button onclick="noResponse()">😅 Maybe... </button>
   </div>
+  <div id="response-message"></div>
+  <div id="hearts-container"></div>
+</div>
+
   <script>
     function yesResponse() {
       document.getElementById('response-message').textContent = "🎉 Yayyy! I love you so much! 💖💕";
