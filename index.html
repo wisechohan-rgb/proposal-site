@@ -7,7 +7,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
+    <!-- Code Unlock Section -->
+    <div id="unlock-section" class="container">
+        <h1>🔒 Enter Code to Continue 💕</h1>
+        <input type="text" id="code-input" placeholder="Enter the special name..." />
+        <button class="unlock-btn" onclick="checkCode()">Unlock 💖</button>
+        <p id="unlock-message"></p>
+    </div>
+
+    <!-- Proposal Section -->
+    <div id="proposal-section" class="container hidden">
         <h1>A Special Question... 💕</h1>
         <p class="question">Will you be mine forever? 💖</p>
         
@@ -33,15 +42,15 @@
             <div class="letter-content">
                 <h2>My Lakshuuu 💞</h2>
                 <p>Kabhi kabhi sochta hoon main kitna lucky hoon jo aap meri life mein aaye ho 😚💫 Aapke bina sab kuch adhoora lagta hai — jaise har khushi ka matlab sirf aap se hi judta ho 💖✨ Aap meri calmness ho jab life messy hoti hai, aur meri excitement ho jab sab kuch perfect lagta hai 💞</p>
-                
+                <br>
                 <p>Aapke bina din suna lagta hai, aur jab baat hoti hai na, toh lagta hai saari duniya ruk gayi sirf sunne ke liye 😍 Aapka voice, aapka smile, aapka care — sab kuch mere dil mein bas gaya hai 💐💋</p>
-                
+                <br>
                 <p>Main bas itna jaanta hoon ki chahe kitni bhi distance ho, aap mere dil ke sabse kareeb ho 💞 Aap mere har thought, har dua, har plan ka part ho 💖 Mera dil sirf ek baat kehta hai — Lakshu meri hai, aur hamesha rahegi 💋</p>
-                
+                <br>
                 <p>Aap meri life ka wo chapter ho jahan har line pyaar se likhi gayi hai 🫶✨ aur main chahta hoon yeh kahani kabhi khatam na ho 😚</p>
-                
+                <br>
                 <p class="ending">I loveee youuuu endlessly my jaan 💖💋</p>
-                
+                <br>
                 <p class="signature">– Tumhara, hamesha<br>Daksh 💞</p>
             </div>
             <button class="close-letter" onclick="closeLetter()">Close</button>
