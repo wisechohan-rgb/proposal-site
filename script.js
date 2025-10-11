@@ -21,97 +21,68 @@ function checkCode() {
 
 // Function when user clicks Yes
 function sayYes() {
-    const proposalPage = document.getElementById('proposal-page');
-    const envelopeStage = document.getElementById('envelope-stage');
-    
-    // Hide proposal page and show envelope
-    proposalPage.classList.add('hidden');
-    envelopeStage.classList.remove('hidden');
-    
-    // Add celebration effect
+    const responseMessage = document.getElementById('response-message');
+    responseMessage.textContent = '🎉 Yay! You made me the happiest person! 🎉';
     createConfetti();
 }
 
 // Function when user clicks Maybe
 function sayNo() {
     const responseMessage = document.getElementById('response-message');
-    responseMessage.textContent = '💕 Take your time, I\'ll wait forever! 💕';
-    
-    // Button runs away
-    const noBtn = document.querySelector('.no-btn');
-    const randomX = Math.random() * 100 - 50;
-    const randomY = Math.random() * 100 - 50;
-    noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+    responseMessage.textContent = '😊 Take your time! I\'ll be waiting... 💕';
 }
 
-// Function to open envelope
-function openEnvelope() {
-    const envelope = document.getElementById('envelope');
-    const letterPopup = document.getElementById('letter-popup');
-    
-    envelope.classList.add('open');
-    
-    // Show letter after animation
-    setTimeout(() => {
-        letterPopup.classList.remove('hidden');
-    }, 600);
-}
-
-// Function to close letter
-function closeLetter() {
-    const letterPopup = document.getElementById('letter-popup');
-    letterPopup.classList.add('hidden');
-}
-
-// Create floating hearts animation
+// Floating hearts animation
 function startHeartAnimation() {
-    const heartsContainer = document.getElementById('hearts-container');
-    
     setInterval(() => {
         const heart = document.createElement('div');
-        heart.classList.add('heart');
-        heart.textContent = ['💕', '💖', '💗', '💝', '💞'][Math.floor(Math.random() * 5)];
-        heart.style.left = Math.random() * 100 + '%';
-        heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
-        
-        heartsContainer.appendChild(heart);
-        
-        // Remove heart after animation
-        setTimeout(() => {
-            heart.remove();
-        }, 5000);
+        heart.textContent = '❤️';
+        heart.style.position = 'fixed';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.top = '100vh';
+        heart.style.fontSize = Math.random() * 20 + 20 + 'px';
+        heart.style.animation = 'float 4s linear';
+        heart.style.pointerEvents = 'none';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 4000);
     }, 300);
 }
 
-// Create confetti effect
+// Confetti effect
 function createConfetti() {
-    const heartsContainer = document.getElementById('hearts-container');
-    
-    for (let i = 0; i < 50; i++) {
+    const colors = ['#ff1493', '#ff69b4', '#ffc0cb', '#00ff88', '#ffcc00'];
+    for (let i = 0; i < 100; i++) {
         setTimeout(() => {
             const confetti = document.createElement('div');
-            confetti.classList.add('heart');
-            confetti.textContent = ['💕', '💖', '💗', '💝', '💞', '🌸', '🌺', '🌹'][Math.floor(Math.random() * 8)];
-            confetti.style.left = Math.random() * 100 + '%';
-            confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
-            
-            heartsContainer.appendChild(confetti);
-            
-            setTimeout(() => {
-                confetti.remove();
-            }, 4000);
-        }, i * 100);
+            confetti.style.position = 'fixed';
+            confetti.style.width = '10px';
+            confetti.style.height = '10px';
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.top = '-10px';
+            confetti.style.borderRadius = '50%';
+            confetti.style.animation = 'fall 3s linear';
+            confetti.style.pointerEvents = 'none';
+            document.body.appendChild(confetti);
+            setTimeout(() => confetti.remove(), 3000);
+        }, i * 30);
     }
 }
 
-// Allow Enter key to submit code
-document.addEventListener('DOMContentLoaded', function() {
-    const codeInput = document.getElementById('code-input');
-    if (codeInput) {
-        codeInput.addEventListener('keypress', function(event) {
-            if (event.key === 'Enter') {
-                checkCode();
-            }
-        });
+// Add CSS for animations
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes float {
+        to {
+            transform: translateY(-100vh);
+            opacity: 0;
+        }
     }
-});
+    @keyframes fall {
+        to {
+            transform: translateY(100vh) rotate(360deg);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
