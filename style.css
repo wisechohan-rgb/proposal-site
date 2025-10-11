@@ -1,29 +1,58 @@
 body {
-  background: linear-gradient(135deg, #ffeef8, #ffe4f1);
-  font-family: 'Segoe UI', cursive, sans-serif;
+  background: linear-gradient(135deg, #ffe9f5, #ffddee 100%);
   min-height: 100vh;
   margin: 0;
+  font-family: 'Segoe UI', sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.container {
+.centered-card {
   background: #fff8fa;
-  padding: 2em 2.3em;
-  border-radius: 1.5em;
-  box-shadow: 0 0 24px #deb5e7;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px #deb5e788;
+  padding: 2.5em 2em 2.2em;
   text-align: center;
-  width: 350px;
+  min-width: 340px;
 }
 h1 {
-  color: #ea7fcc;
+  color: #ff68b0;
   font-size: 2em;
-  margin-bottom: 20px;
+  margin-bottom: 13px;
 }
-p {
-  color: #e4557b;
-  margin-bottom: 18px;
-  font-size: 1.18em;
+.desc {
+  color: #d7639d;
+  font-size: 1.09em;
+  margin-bottom: 24px;
+}
+input[type="text"] {
+  width: 90%;
+  padding: .9em;
+  border: 2px solid #ffb7df;
+  border-radius: 12px;
+  font-size: 1.09em;
+  margin-bottom: 20px;
+  outline: none;
+}
+#unlock-btn {
+  background: linear-gradient(90deg, #ff71c8 0%, #ffb0e0 100%);
+  color: #fff;
+  font-size: 1.07em;
+  border: none;
+  border-radius: 12px;
+  padding: .9em;
+  width: 90%;
+  font-weight: bold;
+  transition: background 0.15s;
+  cursor: pointer;
+}
+#unlock-btn:hover {
+  background: linear-gradient(90deg, #ff509b 0%, #ffb0e0 100%);
+}
+#result-msg {
+  margin-top: 18px;
+  font-size: 1.1em;
+  color: #d7639d;
 }
 .button-row {
   display: flex;
@@ -47,22 +76,8 @@ p {
 .button-row button:hover {
   background: #de91ce;
 }
-#response-message {
-  font-size: 1.3em;
-  color: #ea7fcc;
-  margin: 30px 0 10px;
-  font-weight: bold;
-  min-height: 30px;
-}
-.hearts-container {
-  position: relative;
-}
-.heart {
-  font-size: 2em;
-  animation: float 4s linear;
-  position: absolute;
-}
-@keyframes float {
-  0% { bottom: 0; opacity: 1; }
-  100% { bottom: 100vh; opacity: 0; }
+#love-response {
+  font-size: 1.18em;
+  color: #ff68b0;
+  margin-top: 17px;
 }
