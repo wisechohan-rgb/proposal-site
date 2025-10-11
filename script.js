@@ -22,14 +22,56 @@ function checkCode() {
 // Function when user clicks Yes
 function sayYes() {
     const responseMessage = document.getElementById('response-message');
+    const proposalPage = document.getElementById('proposal-page');
+    const envelopeSection = document.getElementById('envelope-section');
+    const musicPlayer = document.getElementById('music-player');
+    
     responseMessage.textContent = '🎉 Yay! You made me the happiest person! 🎉';
     createConfetti();
+    
+    // Show envelope after 2 seconds
+    setTimeout(() => {
+        proposalPage.classList.add('hidden');
+        envelopeSection.classList.remove('hidden');
+        musicPlayer.classList.remove('hidden');
+    }, 2000);
 }
 
 // Function when user clicks Maybe
 function sayNo() {
     const responseMessage = document.getElementById('response-message');
     responseMessage.textContent = '😊 Take your time! I\'ll be waiting... 💕';
+}
+
+// Open envelope and show letter
+const envelope = document.getElementById('envelope');
+if (envelope) {
+    envelope.addEventListener('click', function() {
+        const envelopeSection = document.getElementById('envelope-section');
+        const letterSection = document.getElementById('letter-section');
+        
+        // Add open animation
+        envelope.classList.add('open');
+        
+        // Show letter after animation
+        setTimeout(() => {
+            envelopeSection.classList.add('hidden');
+            letterSection.classList.remove('hidden');
+        }, 1000);
+    });
+}
+
+// Close letter function
+function closeLetter() {
+    const letterSection = document.getElementById('letter-section');
+    const envelopeSection = document.getElementById('envelope-section');
+    
+    letterSection.classList.add('hidden');
+    envelopeSection.classList.remove('hidden');
+    
+    // Remove open class to reset envelope
+    const envelope = document.getElementById('envelope');
+    envelope.classList.remove('open');
 }
 
 // Floating hearts animation
