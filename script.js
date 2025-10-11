@@ -1,20 +1,20 @@
 // Function to check the entrance code
 function checkCode() {
     const input = document.getElementById('code-input').value.trim();
-    const errorMessage = document.getElementById('error-message');
-    const unlockPage = document.getElementById('unlock-page');
-    const proposalPage = document.getElementById('proposal-page');
+    const unlockMessage = document.getElementById('unlock-message');
+    const unlockSection = document.getElementById('unlock-section');
+    const proposalSection = document.getElementById('proposal-section');
     
     // Check if the code matches 'Lakshita' (case-insensitive)
     if (input.toLowerCase() === 'lakshita') {
-        // Hide unlock page and show proposal page
-        unlockPage.classList.add('hidden');
-        proposalPage.classList.remove('hidden');
-        errorMessage.textContent = '';
+        // Hide unlock section and show proposal section
+        unlockSection.classList.add('hidden');
+        proposalSection.classList.remove('hidden');
+        unlockMessage.textContent = '';
         startHeartAnimation();
     } else {
         // Show error message
-        errorMessage.textContent = '❌ Incorrect code! Try again.';
+        unlockMessage.textContent = '❌ Incorrect code! Try again.';
         document.getElementById('code-input').value = '';
     }
 }
@@ -22,18 +22,16 @@ function checkCode() {
 // Function when user clicks Yes
 function sayYes() {
     const responseMessage = document.getElementById('response-message');
-    const proposalPage = document.getElementById('proposal-page');
+    const proposalSection = document.getElementById('proposal-section');
     const envelopeSection = document.getElementById('envelope-section');
-    const musicPlayer = document.getElementById('music-player');
     
     responseMessage.textContent = '🎉 Yay! You made me the happiest person! 🎉';
     createConfetti();
     
     // Show envelope after 2 seconds
     setTimeout(() => {
-        proposalPage.classList.add('hidden');
+        proposalSection.classList.add('hidden');
         envelopeSection.classList.remove('hidden');
-        musicPlayer.classList.remove('hidden');
     }, 2000);
 }
 
@@ -44,21 +42,19 @@ function sayNo() {
 }
 
 // Open envelope and show letter
-const envelope = document.getElementById('envelope');
-if (envelope) {
-    envelope.addEventListener('click', function() {
-        const envelopeSection = document.getElementById('envelope-section');
-        const letterSection = document.getElementById('letter-section');
-        
-        // Add open animation
-        envelope.classList.add('open');
-        
-        // Show letter after animation
-        setTimeout(() => {
-            envelopeSection.classList.add('hidden');
-            letterSection.classList.remove('hidden');
-        }, 1000);
-    });
+function openLetter() {
+    const envelopeSection = document.getElementById('envelope-section');
+    const letterSection = document.getElementById('letter-section');
+    const envelope = document.getElementById('envelope');
+    
+    // Add open animation
+    envelope.classList.add('open');
+    
+    // Show letter after animation
+    setTimeout(() => {
+        envelopeSection.classList.add('hidden');
+        letterSection.classList.remove('hidden');
+    }, 1000);
 }
 
 // Close letter function
