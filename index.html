@@ -2,43 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>A Special Question 💕</title>
+  <title>Secret Proposal 🔒</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>A Special Question... 💕</h1>
-    <p>Will you marry me? 💖</p>
-    <div class="button-row">
-      <button onclick="yesResponse()">😊 Yes! 💕</button>
-      <button onclick="noResponse()">😅 Maybe... </button>
+  <div class="centered-card">
+    <h1>🔒 Secret Proposal 🔒</h1>
+    <p class="desc">Enter the special code to unlock something amazing!</p>
+    <input type="text" id="code-input" placeholder="Enter code here...">
+    <button id="unlock-btn" onclick="checkCode()">Unlock</button>
+    <div id="result-msg"></div>
+    <div id="love-question" style="display:none;">
+      <p class="desc">Do you love me? ❤️</p>
+      <div class="button-row">
+        <button onclick="yesLove()">😊 Yes!</button>
+        <button onclick="noLove()">😅 Maybe...</button>
+      </div>
+      <div id="love-response"></div>
     </div>
-    <div id="response-message"></div>
-    <div id="hearts-container"></div>
   </div>
-  <script>
-    function yesResponse() {
-      document.getElementById('response-message').textContent = "🎉 Yayyy! I love you so much! 💖💕";
-      showHearts();
-    }
-    function noResponse() {
-      document.getElementById('response-message').textContent = "💕 It's okay, I'll wait forever! 💕";
-    }
-    function showHearts() {
-      const container = document.getElementById('hearts-container');
-      container.innerHTML = '';
-      for(let i=0; i<10; i++) {
-        setTimeout(() => {
-          let heart = document.createElement('div');
-          heart.className = 'heart';
-          heart.style.left = (Math.random()*80+10)+'%';
-          heart.textContent = "❤️";
-          heart.style.bottom = '0';
-          container.appendChild(heart);
-          setTimeout(()=>heart.remove(), 4000);
-        }, i*300);
-      }
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
