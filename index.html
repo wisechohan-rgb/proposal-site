@@ -1,181 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Special Question 💕</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow: hidden;
-        }
-
-        .container {
-            text-align: center;
-            background: white;
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            max-width: 500px;
-            animation: fadeIn 1s ease-in;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        h1 {
-            color: #764ba2;
-            margin-bottom: 1.5rem;
-            font-size: 2rem;
-        }
-
-        .question {
-            font-size: 1.5rem;
-            color: #333;
-            margin-bottom: 2rem;
-        }
-
-        .buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-        }
-
-        button {
-            padding: 1rem 2rem;
-            font-size: 1.2rem;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: bold;
-        }
-
-        .yes-btn {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-        }
-
-        .yes-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 10px 30px rgba(245, 87, 108, 0.4);
-        }
-
-        .no-btn {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            color: white;
-        }
-
-        .no-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 10px 30px rgba(79, 172, 254, 0.4);
-        }
-
-        #response-message {
-            margin-top: 2rem;
-            font-size: 1.3rem;
-            color: #f5576c;
-            font-weight: bold;
-            animation: bounceIn 0.5s ease;
-        }
-
-        @keyframes bounceIn {
-            0% { transform: scale(0); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
-        }
-
-        .heart {
-            position: absolute;
-            font-size: 2rem;
-            animation: float 4s ease-in infinite;
-            opacity: 0;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
-        }
-
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: #f5576c;
-            animation: fall 3s linear infinite;
-        }
-
-        @keyframes fall {
-            to { transform: translateY(100vh) rotate(360deg); }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>A Special Question 💕</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffeef8, #ffe4f1);
+      font-family: 'Segoe UI', cursive, sans-serif;
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      background: #fff8fa;
+      padding: 2em 2.3em;
+      border-radius: 1.5em;
+      box-shadow: 0 0 24px #deb5e7;
+      text-align: center;
+      width: 350px;
+    }
+    h1 {
+      color: #ea7fcc;
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    p {
+      color: #e4557b;
+      margin-bottom: 18px;
+      font-size: 1.18em;
+    }
+    button {
+      padding: .7em 2.2em;
+      border-radius: .7em;
+      background: #ea7fcc;
+      color: #fff;
+      border: none;
+      font-size: 1.1em;
+      cursor: pointer;
+      font-weight: bold;
+      margin: 0 12px;
+    }
+    #response-message {
+      font-size: 1.3em;
+      color: #ea7fcc;
+      margin: 30px 0 10px;
+      font-weight: bold;
+    }
+    .heart {
+      font-size: 2em;
+      animation: float 4s linear;
+      position: absolute;
+    }
+    @keyframes float {
+      0% { bottom: 0; opacity: 1; }
+      100% { bottom: 100vh; opacity: 0; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>A Special Question... 💕</h1>
-        <p class="question">Will you marry me? 💖</p>
-        
-        <div class="buttons">
-            <button class="yes-btn" onclick="sayYes()">Yes! 💕</button>
-            <button class="no-btn" onclick="sayNo()">Maybe... 😊</button>
-        </div>
-        <p id="response-message"></p>
-    </div>
-
-    <script>
-        function sayYes() {
-            const message = document.getElementById('response-message');
-            message.textContent = '🎉 Yayyy! I love you so much! 💖💕';
-            createHearts();
-            createConfetti();
-        }
-
-        function sayNo() {
-            const message = document.getElementById('response-message');
-            message.textContent = 'Aww... maybe you\'ll say yes soon? 😊💕';
-        }
-
-        function createHearts() {
-            for (let i = 0; i < 20; i++) {
-                setTimeout(() => {
-                    const heart = document.createElement('div');
-                    heart.className = 'heart';
-                    heart.textContent = '❤️';
-                    heart.style.left = Math.random() * 100 + 'vw';
-                    heart.style.animationDelay = Math.random() * 2 + 's';
-                    document.body.appendChild(heart);
-                    setTimeout(() => heart.remove(), 4000);
-                }, i * 200);
-            }
-        }
-
-        function createConfetti() {
-            const colors = ['#f5576c', '#4facfe', '#f093fb', '#00f2fe', '#ffd700'];
-            for (let i = 0; i < 50; i++) {
-                setTimeout(() => {
-                    const confetti = document.createElement('div');
-                    confetti.className = 'confetti';
-                    confetti.style.left = Math.random() * 100 + 'vw';
-                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-                    confetti.style.animationDelay = Math.random() * 3 + 's';
-                    document.body.appendChild(confetti);
-                    setTimeout(() => confetti.remove(), 3000);
-                }, i * 30);
-            }
-        }
-    </script>
+  <div class="container">
+    <h1>A Special Question... 💕</h1>
+    <p>Will you marry me? 💖</p>
+    <button onclick="yesResponse()">Yes! 💕</button>
+    <button onclick="noResponse()">Maybe... 😊</button>
+    <div id="response-message"></div>
+    <div id="hearts-container"></div>
+  </div>
+  <script>
+    function yesResponse() {
+      document.getElementById('response-message').textContent = "🎉 Yayyy! I love you so much! 💖💕";
+      showHearts();
+    }
+    function noResponse() {
+      document.getElementById('response-message').textContent = "💕 It's okay, I'll wait forever! 💕";
+    }
+    function showHearts() {
+      const container = document.getElementById('hearts-container');
+      container.innerHTML = '';
+      for(let i=0; i<10; i++) {
+        setTimeout(() => {
+          let heart = document.createElement('div');
+          heart.className = 'heart';
+          heart.style.left = (Math.random()*80+10)+'%';
+          heart.textContent = "❤️";
+          heart.style.bottom = '0';
+          container.appendChild(heart);
+          setTimeout(()=>heart.remove(), 4000);
+        }, i*300);
+      }
+    }
+  </script>
 </body>
 </html>
