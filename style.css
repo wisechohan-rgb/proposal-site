@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #ffeef8 0%, #ffe4f1 50%, #ffd9eb 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 500px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(255, 182, 193, 0.3);
+    text-align: center;
+}
+
+h1 {
+    color: #ff69b4;
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+p {
+    color: #d77fa1;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 2px solid #ffb6c1;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: #ff69b4;
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
+}
+
+button {
+    padding: 12px 30px;
+    margin: 10px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.unlock-page button {
+    background: linear-gradient(135deg, #ff69b4, #ff85c1);
+    color: white;
+    width: 100%;
+}
+
+.unlock-page button:hover {
+    background: linear-gradient(135deg, #ff85c1, #ffa0d2);
+    transform: scale(1.05);
+}
+
+.yes-btn {
+    background: linear-gradient(135deg, #ff69b4, #ff85c1);
+    color: white;
+    flex: 1;
+}
+
+.yes-btn:hover {
+    background: linear-gradient(135deg, #ff85c1, #ffa0d2);
+    transform: scale(1.1);
+}
+
+.no-btn {
+    background: linear-gradient(135deg, #ffb6c1, #ffc9d0);
+    color: #d77fa1;
+    flex: 1;
+}
+
+.no-btn:hover {
+    background: linear-gradient(135deg, #ffc9d0, #ffdce0);
+    transform: scale(1.05);
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.proposal-text {
+    font-size: 1.2em;
+    color: #d77fa1;
+    margin: 20px 0;
+    line-height: 1.6;
+}
+
+.error {
+    color: #ff6b9d;
+    font-size: 0.9em;
+    min-height: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+#response-message {
+    margin-top: 20px;
+    font-size: 1.3em;
+    color: #ff69b4;
+    font-weight: bold;
+}
