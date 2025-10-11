@@ -1,1 +1,3 @@
 # proposal-site
+
+A romantic proposal website for Lakshuu ❤️
