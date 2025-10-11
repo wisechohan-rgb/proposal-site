@@ -20,9 +20,12 @@ function checkCode() {
 
 // Function when user clicks Yes
 function sayYes() {
-    const responseMessage = document.getElementById('response-message');
-    responseMessage.textContent = '🎉 Yay! You made me the happiest person alive! 💕';
-    responseMessage.style.color = '#ff69b4';
+    const proposalPage = document.getElementById('proposal-page');
+    const envelopeStage = document.getElementById('envelope-stage');
+    
+    // Hide proposal page and show envelope
+    proposalPage.classList.add('hidden');
+    envelopeStage.classList.remove('hidden');
     
     // Add celebration effect
     createConfetti();
@@ -35,10 +38,33 @@ function sayNo() {
     responseMessage.style.color = '#d77fa1';
 }
 
-// Simple confetti effect
+// Function to open the envelope
+function openEnvelope() {
+    const envelope = document.getElementById('envelope');
+    const loveLetter = document.getElementById('love-letter');
+    
+    // Add opening animation to envelope
+    envelope.classList.add('opening');
+    
+    // Show love letter after a short delay
+    setTimeout(() => {
+        loveLetter.classList.remove('hidden');
+        createFloatingHearts();
+    }, 600);
+}
+
+// Function to close the love letter
+function closeLetter() {
+    const loveLetter = document.getElementById('love-letter');
+    loveLetter.classList.add('hidden');
+}
+
+// Create confetti effect
 function createConfetti() {
-    const colors = ['#ff69b4', '#ffb6c1', '#ff85c1', '#ffa0d2', '#ffc9d0'];
-    for (let i = 0; i < 50; i++) {
+    const colors = ['#ff69b4', '#ff1493', '#ffc0cb', '#ffb6c1', '#ff85c1'];
+    const confettiCount = 50;
+    
+    for (let i = 0; i < confettiCount; i++) {
         setTimeout(() => {
             const confetti = document.createElement('div');
             confetti.style.position = 'fixed';
@@ -49,31 +75,72 @@ function createConfetti() {
             confetti.style.top = '-10px';
             confetti.style.borderRadius = '50%';
             confetti.style.pointerEvents = 'none';
-            confetti.style.animation = 'fall 3s linear';
+            confetti.style.zIndex = '9999';
+            confetti.style.animation = `fall ${2 + Math.random() * 3}s linear forwards`;
+            
             document.body.appendChild(confetti);
             
-            setTimeout(() => confetti.remove(), 3000);
+            setTimeout(() => {
+                confetti.remove();
+            }, 5000);
         }, i * 30);
     }
 }
 
-// Add CSS animation for confetti
+// Create floating hearts effect
+function createFloatingHearts() {
+    const hearts = ['💕', '💖', '💗', '💓', '💝', '💞'];
+    const heartCount = 20;
+    
+    for (let i = 0; i < heartCount; i++) {
+        setTimeout(() => {
+            const heart = document.createElement('div');
+            heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+            heart.style.position = 'fixed';
+            heart.style.fontSize = '2em';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.bottom = '-50px';
+            heart.style.pointerEvents = 'none';
+            heart.style.zIndex = '999';
+            heart.style.animation = `floatUp ${3 + Math.random() * 2}s linear forwards`;
+            
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }, i * 100);
+    }
+}
+
+// Add CSS animations dynamically
 const style = document.createElement('style');
 style.textContent = `
     @keyframes fall {
         to {
-            transform: translateY(100vh) rotate(360deg);
+            top: 100vh;
+            transform: rotate(360deg);
+        }
+    }
+    
+    @keyframes floatUp {
+        to {
+            bottom: 120vh;
+            transform: translateX(${Math.random() * 200 - 100}px) rotate(${Math.random() * 360}deg);
             opacity: 0;
         }
     }
 `;
 document.head.appendChild(style);
 
-// Allow Enter key to submit the code
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('code-input').addEventListener('keypress', function(event) {
-        if (event.key === 'Enter') {
-            checkCode();
-        }
-    });
+// Add enter key support for code input
+document.addEventListener('DOMContentLoaded', () => {
+    const codeInput = document.getElementById('code-input');
+    if (codeInput) {
+        codeInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                checkCode();
+            }
+        });
+    }
 });
