@@ -3,69 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Special Proposal</title>
+    <title>For My Lakshuu 💞</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <!-- Stage 1: Unlock Page -->
-        <div id="unlock-page" class="unlock-page">
-            <h1>🔒 Secret Proposal 🔒</h1>
-            <p>Enter the special code to unlock something amazing!</p>
-            <input type="text" id="code-input" placeholder="Enter code here...">
-            <button onclick="checkCode()">Unlock</button>
-            <p id="error-message" class="error"></p>
-        </div>
+        <h1>A Special Question... 💕</h1>
+        <p class="question">Will you be mine forever? 💖</p>
         
-        <!-- Stage 2: Proposal Page -->
-        <div id="proposal-page" class="proposal-page hidden">
-            <h1>💖 Will You Marry Me? 💖</h1>
-            <p class="proposal-text">You are the love of my life, and I can't imagine spending it with anyone else.</p>
-            <div class="buttons">
-                <button class="yes-btn" onclick="sayYes()">Yes! 💕</button>
-                <button class="no-btn" onclick="sayNo()">Maybe... 😊</button>
-            </div>
-            <p id="response-message"></p>
+        <div class="buttons">
+            <button class="yes-btn" onclick="sayYes()">Yes! 💕</button>
+            <button class="no-btn" onclick="sayNo()">Maybe... 😊</button>
         </div>
-
-        <!-- Envelope Section -->
-        <div id="envelope-section" class="envelope-section hidden">
-            <div class="envelope" id="envelope">
-                <div class="envelope-flap"></div>
-                <div class="envelope-body"></div>
-            </div>
-            <p class="envelope-hint">Click the envelope to open it! 💌</p>
+        <p id="response-message"></p>
+    </div>
+    
+    <!-- Envelope Section -->
+    <div id="envelope-section" class="envelope-section hidden">
+        <div class="envelope" id="envelope" onclick="openLetter()">
+            <div class="envelope-flap"></div>
+            <div class="envelope-body"></div>
         </div>
-
-        <!-- Letter Section -->
-        <div id="letter-section" class="letter-section hidden">
-            <div class="letter">
-                <div class="letter-content">
-                    <h2>My Lakshuuu 💞</h2>
-                    <p>Kabhi kabhi sochta hoon main kitna lucky hoon jo aap meri life mein aaye ho 😚💫 Aapke bina sab kuch adhoora lagta hai — jaise har khushi ka matlab sirf aap se hi judta ho 💖✨ Aap meri calmness ho jab life messy hoti hai, aur meri excitement ho jab sab kuch perfect lagta hai 💞</p>
-                    
-                    <p>Aapke bina din suna lagta hai, aur jab baat hoti hai na, toh lagta hai saari duniya ruk gayi sirf sunne ke liye 😍 Aapka voice, aapka smile, aapka care — sab kuch mere dil mein bas gaya hai 💐💋</p>
-                    
-                    <p>Main bas itna jaanta hoon ki chahe kitni bhi distance ho, aap mere dil ke sabse kareeb ho 💞 Aap mere har thought, har dua, har plan ka part ho 💖 Mera dil sirf ek baat kehta hai — Lakshu meri hai, aur hamesha rahegi 💋</p>
-                    
-                    <p>Aap meri life ka wo chapter ho jahan har line pyaar se likhi gayi hai 🫶✨ aur main chahta hoon yeh kahani kabhi khatam na ho 😚</p>
-                    
-                    <p class="ending">I loveee youuuu endlessly my jaan 💖💋</p>
-                    
-                    <p class="signature">– Tumhara, hamesha<br>Daksh 💞</p>
-                </div>
-                <button class="close-letter" onclick="closeLetter()">Close</button>
+        <p class="envelope-hint">Click the envelope to open it! 💌</p>
+    </div>
+    
+    <!-- Letter Section -->
+    <div id="letter-section" class="letter-section hidden">
+        <div class="letter">
+            <div class="letter-content">
+                <h2>My Lakshuuu 💞</h2>
+                <p>Kabhi kabhi sochta hoon main kitna lucky hoon jo aap meri life mein aaye ho 😚💫 Aapke bina sab kuch adhoora lagta hai — jaise har khushi ka matlab sirf aap se hi judta ho 💖✨ Aap meri calmness ho jab life messy hoti hai, aur meri excitement ho jab sab kuch perfect lagta hai 💞</p>
+                
+                <p>Aapke bina din suna lagta hai, aur jab baat hoti hai na, toh lagta hai saari duniya ruk gayi sirf sunne ke liye 😍 Aapka voice, aapka smile, aapka care — sab kuch mere dil mein bas gaya hai 💐💋</p>
+                
+                <p>Main bas itna jaanta hoon ki chahe kitni bhi distance ho, aap mere dil ke sabse kareeb ho 💞 Aap mere har thought, har dua, har plan ka part ho 💖 Mera dil sirf ek baat kehta hai — Lakshu meri hai, aur hamesha rahegi 💋</p>
+                
+                <p>Aap meri life ka wo chapter ho jahan har line pyaar se likhi gayi hai 🫶✨ aur main chahta hoon yeh kahani kabhi khatam na ho 😚</p>
+                
+                <p class="ending">I loveee youuuu endlessly my jaan 💖💋</p>
+                
+                <p class="signature">– Tumhara, hamesha<br>Daksh 💞</p>
+                
+                <a href="https://open.spotify.com/track/2TYxwTH2HhL6OLVkZlsDLV?si=3e66d4b007274298" target="_blank" class="spotify-btn">🎵 Play Our Song on Spotify</a>
             </div>
+            <button class="close-letter" onclick="closeLetter()">Close</button>
         </div>
     </div>
-
-    <!-- Music Player -->
-    <div id="music-player" class="music-player hidden">
-        <a href="https://open.spotify.com/track/2TYxwTH2HhL6OLVkZlsDLV?si=3e66d4b007274298" target="_blank" class="music-link">
-            🎵 Play Our Song on Spotify
-        </a>
-    </div>
-
+    
     <script src="script.js"></script>
 </body>
 </html>
