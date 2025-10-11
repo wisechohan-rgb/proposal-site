@@ -3,22 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Lakshuu 💞</title>
-    <link rel="stylesheet" href="style.css">
+    <title>A Special Question 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 500px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        h1 {
+            color: #764ba2;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .question {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 2rem;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        button {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .yes-btn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .yes-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(245, 87, 108, 0.4);
+        }
+
+        .no-btn {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+        }
+
+        .no-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(79, 172, 254, 0.4);
+        }
+
+        #response-message {
+            margin-top: 2rem;
+            font-size: 1.3rem;
+            color: #f5576c;
+            font-weight: bold;
+            animation: bounceIn 0.5s ease;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 2rem;
+            animation: float 4s ease-in infinite;
+            opacity: 0;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #f5576c;
+            animation: fall 3s linear infinite;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(100vh) rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
-    <!-- Code Unlock Section -->
-    <div id="unlock-section" class="container">
-        <h1>🔒 Enter Code to Continue 💕</h1>
-        <input type="text" id="code-input" placeholder="Enter the special name..." />
-        <button class="unlock-btn" onclick="checkCode()">Unlock 💖</button>
-        <p id="unlock-message"></p>
-    </div>
-
-    <!-- Proposal Section -->
-    <div id="proposal-section" class="container hidden">
+    <div class="container">
         <h1>A Special Question... 💕</h1>
-        <p class="question">Will you be mine forever? 💖</p>
+        <p class="question">Will you marry me? 💖</p>
         
         <div class="buttons">
             <button class="yes-btn" onclick="sayYes()">Yes! 💕</button>
@@ -26,37 +134,48 @@
         </div>
         <p id="response-message"></p>
     </div>
-    
-    <!-- Envelope Section -->
-    <div id="envelope-section" class="envelope-section hidden">
-        <div class="envelope" id="envelope" onclick="openLetter()">
-            <div class="envelope-flap"></div>
-            <div class="envelope-body"></div>
-        </div>
-        <p class="envelope-hint">Click the envelope to open it! 💌</p>
-    </div>
-    
-    <!-- Letter Section -->
-    <div id="letter-section" class="letter-section hidden">
-        <div class="letter">
-            <div class="letter-content">
-                <h2>My Lakshuuu 💞</h2>
-                <p>Kabhi kabhi sochta hoon main kitna lucky hoon jo aap meri life mein aaye ho 😚💫 Aapke bina sab kuch adhoora lagta hai — jaise har khushi ka matlab sirf aap se hi judta ho 💖✨ Aap meri calmness ho jab life messy hoti hai, aur meri excitement ho jab sab kuch perfect lagta hai 💞</p>
-                <br>
-                <p>Aapke bina din suna lagta hai, aur jab baat hoti hai na, toh lagta hai saari duniya ruk gayi sirf sunne ke liye 😍 Aapka voice, aapka smile, aapka care — sab kuch mere dil mein bas gaya hai 💐💋</p>
-                <br>
-                <p>Main bas itna jaanta hoon ki chahe kitni bhi distance ho, aap mere dil ke sabse kareeb ho 💞 Aap mere har thought, har dua, har plan ka part ho 💖 Mera dil sirf ek baat kehta hai — Lakshu meri hai, aur hamesha rahegi 💋</p>
-                <br>
-                <p>Aap meri life ka wo chapter ho jahan har line pyaar se likhi gayi hai 🫶✨ aur main chahta hoon yeh kahani kabhi khatam na ho 😚</p>
-                <br>
-                <p class="ending">I loveee youuuu endlessly my jaan 💖💋</p>
-                <br>
-                <p class="signature">– Tumhara, hamesha<br>Daksh 💞</p>
-            </div>
-            <button class="close-letter" onclick="closeLetter()">Close</button>
-        </div>
-    </div>
-    
-    <script src="script.js"></script>
+
+    <script>
+        function sayYes() {
+            const message = document.getElementById('response-message');
+            message.textContent = '🎉 Yayyy! I love you so much! 💖💕';
+            createHearts();
+            createConfetti();
+        }
+
+        function sayNo() {
+            const message = document.getElementById('response-message');
+            message.textContent = 'Aww... maybe you\'ll say yes soon? 😊💕';
+        }
+
+        function createHearts() {
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.textContent = '❤️';
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.animationDelay = Math.random() * 2 + 's';
+                    document.body.appendChild(heart);
+                    setTimeout(() => heart.remove(), 4000);
+                }, i * 200);
+            }
+        }
+
+        function createConfetti() {
+            const colors = ['#f5576c', '#4facfe', '#f093fb', '#00f2fe', '#ffd700'];
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDelay = Math.random() * 3 + 's';
+                    document.body.appendChild(confetti);
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 30);
+            }
+        }
+    </script>
 </body>
 </html>
