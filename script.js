@@ -11,6 +11,7 @@ function checkCode() {
         unlockPage.classList.add('hidden');
         proposalPage.classList.remove('hidden');
         errorMessage.textContent = '';
+        startHeartAnimation();
     } else {
         // Show error message
         errorMessage.textContent = '❌ Incorrect code! Try again.';
@@ -34,111 +35,81 @@ function sayYes() {
 // Function when user clicks Maybe
 function sayNo() {
     const responseMessage = document.getElementById('response-message');
-    responseMessage.textContent = '🥺 Take your time... I\'ll wait forever for you! 💖';
-    responseMessage.style.color = '#d77fa1';
+    responseMessage.textContent = '💕 Take your time, I\'ll wait forever! 💕';
+    
+    // Button runs away
+    const noBtn = document.querySelector('.no-btn');
+    const randomX = Math.random() * 100 - 50;
+    const randomY = Math.random() * 100 - 50;
+    noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
 }
 
-// Function to open the envelope
+// Function to open envelope
 function openEnvelope() {
     const envelope = document.getElementById('envelope');
-    const loveLetter = document.getElementById('love-letter');
+    const letterPopup = document.getElementById('letter-popup');
     
-    // Add opening animation to envelope
-    envelope.classList.add('opening');
+    envelope.classList.add('open');
     
-    // Show love letter after a short delay
+    // Show letter after animation
     setTimeout(() => {
-        loveLetter.classList.remove('hidden');
-        createFloatingHearts();
+        letterPopup.classList.remove('hidden');
     }, 600);
 }
 
-// Function to close the love letter
+// Function to close letter
 function closeLetter() {
-    const loveLetter = document.getElementById('love-letter');
-    loveLetter.classList.add('hidden');
+    const letterPopup = document.getElementById('letter-popup');
+    letterPopup.classList.add('hidden');
+}
+
+// Create floating hearts animation
+function startHeartAnimation() {
+    const heartsContainer = document.getElementById('hearts-container');
+    
+    setInterval(() => {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.textContent = ['💕', '💖', '💗', '💝', '💞'][Math.floor(Math.random() * 5)];
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+        
+        heartsContainer.appendChild(heart);
+        
+        // Remove heart after animation
+        setTimeout(() => {
+            heart.remove();
+        }, 5000);
+    }, 300);
 }
 
 // Create confetti effect
 function createConfetti() {
-    const colors = ['#ff69b4', '#ff1493', '#ffc0cb', '#ffb6c1', '#ff85c1'];
-    const confettiCount = 50;
+    const heartsContainer = document.getElementById('hearts-container');
     
-    for (let i = 0; i < confettiCount; i++) {
+    for (let i = 0; i < 50; i++) {
         setTimeout(() => {
             const confetti = document.createElement('div');
-            confetti.style.position = 'fixed';
-            confetti.style.width = '10px';
-            confetti.style.height = '10px';
-            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.classList.add('heart');
+            confetti.textContent = ['💕', '💖', '💗', '💝', '💞', '🌸', '🌺', '🌹'][Math.floor(Math.random() * 8)];
             confetti.style.left = Math.random() * 100 + '%';
-            confetti.style.top = '-10px';
-            confetti.style.borderRadius = '50%';
-            confetti.style.pointerEvents = 'none';
-            confetti.style.zIndex = '9999';
-            confetti.style.animation = `fall ${2 + Math.random() * 3}s linear forwards`;
+            confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
             
-            document.body.appendChild(confetti);
+            heartsContainer.appendChild(confetti);
             
             setTimeout(() => {
                 confetti.remove();
-            }, 5000);
-        }, i * 30);
-    }
-}
-
-// Create floating hearts effect
-function createFloatingHearts() {
-    const hearts = ['💕', '💖', '💗', '💓', '💝', '💞'];
-    const heartCount = 20;
-    
-    for (let i = 0; i < heartCount; i++) {
-        setTimeout(() => {
-            const heart = document.createElement('div');
-            heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
-            heart.style.position = 'fixed';
-            heart.style.fontSize = '2em';
-            heart.style.left = Math.random() * 100 + '%';
-            heart.style.bottom = '-50px';
-            heart.style.pointerEvents = 'none';
-            heart.style.zIndex = '999';
-            heart.style.animation = `floatUp ${3 + Math.random() * 2}s linear forwards`;
-            
-            document.body.appendChild(heart);
-            
-            setTimeout(() => {
-                heart.remove();
-            }, 6000);
+            }, 4000);
         }, i * 100);
     }
 }
 
-// Add CSS animations dynamically
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes fall {
-        to {
-            top: 100vh;
-            transform: rotate(360deg);
-        }
-    }
-    
-    @keyframes floatUp {
-        to {
-            bottom: 120vh;
-            transform: translateX(${Math.random() * 200 - 100}px) rotate(${Math.random() * 360}deg);
-            opacity: 0;
-        }
-    }
-`;
-document.head.appendChild(style);
-
-// Add enter key support for code input
-document.addEventListener('DOMContentLoaded', () => {
+// Allow Enter key to submit code
+document.addEventListener('DOMContentLoaded', function() {
     const codeInput = document.getElementById('code-input');
     if (codeInput) {
-        codeInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
+        codeInput.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
                 checkCode();
             }
         });
