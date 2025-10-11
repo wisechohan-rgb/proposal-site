@@ -11,6 +11,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow-x: hidden;
 }
 
 .container {
@@ -21,12 +22,19 @@ body {
     border-radius: 20px;
     box-shadow: 0 8px 32px rgba(255, 182, 193, 0.3);
     text-align: center;
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 h1 {
     color: #ff69b4;
     margin-bottom: 20px;
     font-size: 2em;
+    text-shadow: 2px 2px 4px rgba(255, 182, 193, 0.3);
 }
 
 p {
@@ -35,92 +43,277 @@ p {
     font-size: 1.1em;
 }
 
-input[type="text"] {
+/* Stage 1: Unlock Page */
+.unlock-page input {
     width: 100%;
-    padding: 12px;
+    padding: 15px;
     margin-bottom: 15px;
     border: 2px solid #ffb6c1;
     border-radius: 10px;
-    font-size: 16px;
+    font-size: 1em;
+    text-align: center;
     outline: none;
-    transition: all 0.3s ease;
+    transition: all 0.3s;
 }
 
-input[type="text"]:focus {
+.unlock-page input:focus {
     border-color: #ff69b4;
     box-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
 }
 
-button {
-    padding: 12px 30px;
-    margin: 10px;
-    border: none;
-    border-radius: 25px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: bold;
-}
-
 .unlock-page button {
-    background: linear-gradient(135deg, #ff69b4, #ff85c1);
-    color: white;
     width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #ff69b4, #ff1493);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: transform 0.2s;
 }
 
 .unlock-page button:hover {
-    background: linear-gradient(135deg, #ff85c1, #ffa0d2);
     transform: scale(1.05);
 }
 
-.yes-btn {
-    background: linear-gradient(135deg, #ff69b4, #ff85c1);
-    color: white;
-    flex: 1;
+.error {
+    color: #ff1493;
+    font-size: 0.9em;
+    margin-top: 10px;
 }
 
-.yes-btn:hover {
-    background: linear-gradient(135deg, #ff85c1, #ffa0d2);
-    transform: scale(1.1);
+/* Stage 2: Proposal Page */
+.proposal-page {
+    animation: slideIn 0.5s ease-out;
 }
 
-.no-btn {
-    background: linear-gradient(135deg, #ffb6c1, #ffc9d0);
-    color: #d77fa1;
-    flex: 1;
-}
-
-.no-btn:hover {
-    background: linear-gradient(135deg, #ffc9d0, #ffdce0);
-    transform: scale(1.05);
-}
-
-.buttons {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
+@keyframes slideIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
 }
 
 .proposal-text {
     font-size: 1.2em;
-    color: #d77fa1;
-    margin: 20px 0;
+    color: #ff69b4;
+    margin: 30px 0;
     line-height: 1.6;
 }
 
-.error {
-    color: #ff6b9d;
-    font-size: 0.9em;
-    min-height: 20px;
+.buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
 }
 
+.yes-btn, .no-btn {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: bold;
+}
+
+.yes-btn {
+    background: linear-gradient(135deg, #ff69b4, #ff1493);
+    color: white;
+}
+
+.yes-btn:hover {
+    transform: scale(1.1) rotate(-2deg);
+    box-shadow: 0 8px 20px rgba(255, 20, 147, 0.4);
+}
+
+.no-btn {
+    background: linear-gradient(135deg, #ffc0cb, #ffb6c1);
+    color: #ff1493;
+}
+
+.no-btn:hover {
+    transform: scale(0.95);
+}
+
+/* Stage 3: Envelope */
+.envelope-stage {
+    animation: fadeIn 0.8s ease-in;
+}
+
+.envelope {
+    position: relative;
+    width: 200px;
+    height: 140px;
+    margin: 40px auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.envelope:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.envelope-body {
+    position: absolute;
+    bottom: 0;
+    width: 200px;
+    height: 120px;
+    background: linear-gradient(135deg, #fff0f5, #ffe4e1);
+    border: 3px solid #ffb6c1;
+    border-radius: 5px;
+    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+}
+
+.envelope-flap {
+    position: absolute;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-top: 80px solid #ffb6c1;
+    z-index: 1;
+    transform-origin: top;
+    transition: transform 0.5s ease;
+}
+
+.envelope.opening .envelope-flap {
+    transform: rotateX(180deg);
+}
+
+.heart-seal {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.5em;
+    z-index: 2;
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.1); }
+}
+
+.hint {
+    color: #ff69b4;
+    font-style: italic;
+    margin-top: 20px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Stage 4: Love Letter */
+.love-letter {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.letter-content {
+    position: relative;
+    background: linear-gradient(135deg, #fff5f7, #ffe4e8);
+    padding: 40px;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 10px 40px rgba(255, 105, 180, 0.5);
+    animation: popUp 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    border: 3px solid #ffb6c1;
+}
+
+@keyframes popUp {
+    0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+    100% { transform: scale(1) rotate(0); opacity: 1; }
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff69b4;
+    color: white;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.close-btn:hover {
+    background: #ff1493;
+    transform: rotate(90deg);
+}
+
+.letter-content h2 {
+    color: #ff1493;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: 'Brush Script MT', cursive;
+}
+
+.letter-content p {
+    color: #d77fa1;
+    font-size: 1.1em;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.signature {
+    margin-top: 30px;
+    font-style: italic;
+    text-align: right;
+    color: #ff69b4;
+    font-size: 1.2em;
+}
+
+.letter-hearts {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    font-size: 1.5em;
+}
+
+.letter-hearts span {
+    animation: float 3s infinite;
+}
+
+.letter-hearts span:nth-child(2) { animation-delay: 0.2s; }
+.letter-hearts span:nth-child(3) { animation-delay: 0.4s; }
+.letter-hearts span:nth-child(4) { animation-delay: 0.6s; }
+.letter-hearts span:nth-child(5) { animation-delay: 0.8s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Hidden class */
 .hidden {
     display: none;
 }
 
-#response-message {
-    margin-top: 20px;
-    font-size: 1.3em;
-    color: #ff69b4;
-    font-weight: bold;
+/* Floating hearts background animation */
+@keyframes floatHearts {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
 }
