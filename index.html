@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Proposal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="unlock-page" class="unlock-page">
+            <h1>🔒 Secret Proposal 🔒</h1>
+            <p>Enter the special code to unlock something amazing!</p>
+            <input type="text" id="code-input" placeholder="Enter code here...">
+            <button onclick="checkCode()">Unlock</button>
+            <p id="error-message" class="error"></p>
+        </div>
+        
+        <div id="proposal-page" class="proposal-page hidden">
+            <h1>💖 Will You Marry Me? 💖</h1>
+            <p class="proposal-text">You are the love of my life, and I can't imagine spending it with anyone else.</p>
+            <div class="buttons">
+                <button class="yes-btn" onclick="sayYes()">Yes! 💕</button>
+                <button class="no-btn" onclick="sayNo()">Maybe... 😊</button>
+            </div>
+            <p id="response-message"></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
