@@ -1,7 +1,7 @@
 function checkCode() {
   const code = document.getElementById('code-input').value.trim();
   const result = document.getElementById('result-msg');
-  if (code === 'lakshita') {
+  if (code === 'bhakti') {
     result.textContent = "Unlocked! 🎉";
     result.style.color = "#ff68b0";
     document.getElementById('love-question').style.display = '';
