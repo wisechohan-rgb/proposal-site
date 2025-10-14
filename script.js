@@ -13,6 +13,7 @@ function checkCode() {
     document.getElementById('love-question').style.display = 'none';
   }
 }
+document.getElementById('unlock-btn').addEventListener('click', checkCode);
 
 function yesLove() {
   document.getElementById('love-response').textContent =
@@ -22,20 +23,21 @@ function yesLove() {
     addGlitterHeart();
   }, 1100);
 }
-
 function noLove() {
   document.getElementById('love-response').textContent =
     "No worries! I'll keep loving you anyway! 😊🌸";
   document.getElementById('love-letter-container').style.display = 'none';
 }
-
 function addGlitterHeart() {
   const glitterDiv = document.getElementById('glitter-heart');
-  glitterDiv.innerHTML = '<span class="glitter-heart">💖</span>';
-  
+  glitterDiv.innerHTML = '💖';
+
   // Make glitter heart clickable to open modal
   glitterDiv.addEventListener('click', openModal);
 }
+
+// Open modal when cross is clicked in letter
+document.getElementById('openModal').addEventListener('click', openModal);
 
 // Modal functions
 function openModal() {
@@ -44,7 +46,6 @@ function openModal() {
     modal.style.display = 'flex';
   }
 }
-
 function closeModal() {
   const modal = document.getElementById('modal-overlay');
   if (modal) {
@@ -52,7 +53,9 @@ function closeModal() {
   }
 }
 
-// Close modal when clicking outside the modal content
+document.getElementById('closeModal').addEventListener('click', closeModal);
+
+// Optional: close modal by clicking outside content
 document.addEventListener('DOMContentLoaded', function() {
   const modalOverlay = document.getElementById('modal-overlay');
   if (modalOverlay) {
