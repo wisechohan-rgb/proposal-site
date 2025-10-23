@@ -3,7 +3,7 @@ function checkCode() {
   const code = document.getElementById('code-input').value.trim();
   const result = document.getElementById('result-msg');
   
-  if (code === 'bhakti') {
+  if (code === 'anusha') { // changed from 'bhakti' to 'anusha'
     result.textContent = "Unlocked! 🎉";
     result.style.color = "#ff68b0";
     
