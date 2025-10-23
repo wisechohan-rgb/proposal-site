@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>🔒 Secret Proposal</title>
-  <link href="style.css" rel="stylesheet"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secret Proposal 🔒</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
+  <!-- Home Screen / Code Unlock -->
+  <div id="home-screen" class="centered-card">
     <h1>🔒 Secret Proposal 🔒</h1>
     <div class="desc">Enter the special code to unlock something amazing!</div>
-    <input id="code-input" placeholder="Special code..." type="text"/>
+    <input type="text" id="code-input" placeholder="Special code...">
     <button id="unlock-btn">Unlock</button>
     <div id="result-msg"></div>
   </div>
+
   <!-- Love Question Dialog -->
   <div id="love-question" style="display:none;">
     <div style="margin:16px 0;font-size:1.04em;"><b>Do you love me? ❤️</b></div>
@@ -23,53 +25,54 @@
     </div>
     <div id="love-response"></div>
   </div>
+
   <!-- Love Letter View -->
   <div id="love-letter-container" style="display:none;position:relative;">
     <button class="letter-cross" id="openModal" title="Open special modal">×</button>
     <div class="love-letter">
-      <div class="letter-heading">My Dearest bhakti 💞</div>
+      <div class="letter-heading">My Dearest Bhakti 💞</div>
       <div class="letter-body">
-        <p>From the moment I met you, my world changed forever.</p>
-        <p>Your smile lights up my darkest days.</p>
-        <p>Your laughter is the sweetest melody I've ever heard.</p>
-        <p>Every moment with you is a treasure.</p>
-        <p>You are my sunshine, my inspiration, my everything.</p>
-        <p>I promise to cherish you always.</p>
-        <p>With all my love,</p>
-        <p>Forever yours 💕</p>
+        From the moment I met you, my world changed in ways I never imagined 😚💫<br>
+        Your smile lights up even my darkest days, and your laughter is the sweetest melody I know 💖✨<br>
+        Every conversation with you feels like time stands still, and the world fades away 😍<br>
+        Your voice, your kindness, your heart — they've all found a permanent home in mine 💐💋<br><br>
+        I love you more than words can say, and I hope you'll let me show you forever 🥰💍
       </div>
     </div>
   </div>
+
   <!-- Modal Overlay -->
-  <div class="modal-overlay" id="modal-overlay" style="display:none;">
+  <div id="modal-overlay" class="modal-overlay" style="display:none;">
     <div class="modal-content">
       <button class="modal-close" id="closeModal">×</button>
       <h2>Special Memories 💖</h2>
-      <br />
+      
       <div class="modal-buttons">
-        <button class="modal-btn">Ur my love royy since i met u !!</button>
-        <button class="modal-btn"> Ur the preetiest one ive ever met </button>
-        <button class="modal-btn">I love youu muwahh , do you? </button>
+        <button class="modal-btn">special moment</button>
+        <button class="modal-btn">myy cutie</button>
+        <button class="modal-btn">Another letter</button>
       </div>
+
       <div class="playlist-section">
         <h3>Our Playlist 🎵</h3>
         <div class="playlist-cards">
           <div class="playlist-card">
-            <img alt="Song 1" />
+            <img src="https://via.placeholder.com/150/FF69B4/FFFFFF?text=Song+1" alt="Song 1">
             <div class="song-name">Our First Song</div>
           </div>
           <div class="playlist-card">
-            <img alt="Song 2" />
+            <img src="https://via.placeholder.com/150/FFB6C1/FFFFFF?text=Song+2" alt="Song 2">
             <div class="song-name">Love Melody</div>
           </div>
           <div class="playlist-card">
-            <img alt="Song 3" />
+            <img src="https://via.placeholder.com/150/FFC0CB/FFFFFF?text=Song+3" alt="Song 3">
             <div class="song-name">Forever Together</div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
