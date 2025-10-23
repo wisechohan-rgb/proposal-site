@@ -1,9 +1,9 @@
 // Code Unlock Functionality
 function checkCode() {
-  const code = document.getElementById('code-input').value.trim();
+  const code = document.getElementById('code-input').value.trim().toLowerCase();
   const result = document.getElementById('result-msg');
   
-  if (code === 'anusha') { // changed from 'bhakti' to 'anusha'
+  if (code === 'anusha') {
     result.textContent = "Unlocked! 🎉";
     result.style.color = "#ff68b0";
     
