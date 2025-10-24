@@ -1,3 +1,3 @@
 # proposal-site
 
-A romantic proposal website for bhakti ❤️
+A romantic proposal website for️
