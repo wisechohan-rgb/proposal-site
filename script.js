@@ -5,7 +5,7 @@ function checkCode() {
   
   if (code === 'Riyanshi') {
     result.textContent = "Unlocked! 🎉";
-    result.style.color = "#ff68b0";
+    result.style.color = "#ff68b0"; }
     
     setTimeout(() => {
       document.getElementById('home-screen').style.display = 'none';
